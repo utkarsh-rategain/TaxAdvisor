@@ -1,0 +1,9 @@
+Flask
+psycopg2-binary
+PyPDF2
+pytesseract
+pdf2image
+requests
+python-dotenv
+Pillow 
+markdown2 

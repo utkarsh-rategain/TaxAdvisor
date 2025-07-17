@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review & Edit Financial Data</title>
+    <link href="https://fonts.googleapis.com/css2?family=Aptos+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Aptos Display', sans-serif;
+            background: #f8fbff;
+            color: #222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 2rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 80, 200, 0.08);
+            text-align: center;
+            max-width: 480px;
+        }
+        h2 {
+            color: #0050c8;
+            margin-bottom: 1rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.3rem;
+            color: #0050c8;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #b3c6e0;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        .regime-group {
+            margin: 1.2rem 0;
+            text-align: left;
+        }
+        .submit-btn {
+            background: #0050c8;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .submit-btn:hover {
+            background: #003a8c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Review & Edit Your Financial Data</h2>
+        <form action="/calculate" method="post">
+            <input type="hidden" name="session_id" value="{{ session_id }}">
+            <div class="form-group">
+                <label>Gross Salary</label>
+                <input type="number" name="gross_salary" value="{{ data.gross_salary }}" required>
+            </div>
+            <div class="form-group">
+                <label>Basic Salary</label>
+                <input type="number" name="basic_salary" value="{{ data.basic_salary }}" required>
+            </div>
+            <div class="form-group">
+                <label>HRA Received</label>
+                <input type="number" name="hra_received" value="{{ data.hra_received }}" required>
+            </div>
+            <div class="form-group">
+                <label>Rent Paid</label>
+                <input type="number" name="rent_paid" value="{{ data.rent_paid }}" required>
+            </div>
+            <div class="form-group">
+                <label>80C Investments</label>
+                <input type="number" name="deduction_80c" value="{{ data.deduction_80c }}" required>
+            </div>
+            <div class="form-group">
+                <label>80D Medical Insurance</label>
+                <input type="number" name="deduction_80d" value="{{ data.deduction_80d }}" required>
+            </div>
+            <div class="form-group">
+                <label>Standard Deduction</label>
+                <input type="number" name="standard_deduction" value="{{ data.standard_deduction }}" required>
+            </div>
+            <div class="form-group">
+                <label>Professional Tax</label>
+                <input type="number" name="professional_tax" value="{{ data.professional_tax }}" required>
+            </div>
+            <div class="form-group">
+                <label>TDS</label>
+                <input type="number" name="tds" value="{{ data.tds }}" required>
+            </div>
+            <div class="regime-group">
+                <label>Select Tax Regime:</label>
+                <input type="radio" id="old" name="regime" value="old" required>
+                <label for="old" style="display:inline; color:#222;">Old Regime</label>
+                <input type="radio" id="new" name="regime" value="new" checked required>
+                <label for="new" style="display:inline; color:#222;">New Regime</label>
+            </div>
+            <button class="submit-btn" type="submit">Calculate Tax</button>
+        </form>
+    </div>
+</body>
+</html> 
